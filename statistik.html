@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard MAN 1 Pessel - Profil & PPDB Online</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --secondary: #7c3aed;
+      --accent: #10b981;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .sidebar {
+      transition: all 0.3s;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+
+    .card {
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Sidebar -->
+  <div class="sidebar hidden md:flex md:flex-col w-64 h-screen fixed overflow-y-auto text-white px-4 py-8 z-30">
+    <div class="flex items-center justify-center mb-10">
+      <div class="w-12 h-12 rounded-lg bg-white flex items-center justify-center mr-3">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/62a2c45b-be06-4e53-be53-f73f0280971e.png" class="w-10 h-10"/>
+      </div>
+      <h1 class="text-xl font-bold">MAN 1 Pessel</h1>
+    </div>
+
+    <div class="mb-8 px-3">
+      <div class="flex items-center bg-white bg-opacity-10 rounded-lg p-3">
+        <div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/050da9b8-30fc-4ea3-b9ee-95711a690304.png" class="w-full h-full object-cover"/>
+        </div>
+        <div>
+          <h4 class="font-semibold">Admin MAN</h4>
+          <p class="text-xs text-gray-200">Administrator</p>
+        </div>
+      </div>
+    </div>
+
+    <ul class="space-y-2">
+      <li><a href="admin.html" class="flex items-center p-3 rounded-lg text-white bg-white bg-opacity-20"><i class="fas fa-home mr-3 w-5 text-center"></i>Dashboard</a></li>
+      <li><a href="profil.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-user-graduate mr-3 w-5 text-center"></i>Profil Sekolah</a></li>
+      <li><a href="kalender.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-calendar-alt mr-3 w-5 text-center"></i>Kalendar Akademik</a></li>
+      <li><a href="ppdb.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-file-alt mr-3 w-5 text-center"></i>PPDB Online</a></li>
+      <li><a href="statistik.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-chart-line mr-3 w-5 text-center"></i>Statistik PPDB</a></li>
+     
+      <li><a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-users mr-3 w-5 text-center"></i>Guru & Staff</a></li>
+      <li><a href="galeri.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-image mr-3 w-5 text-center"></i>Galeri Sekolah</a></li>
+      <li><a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-envelope mr-3 w-5 text-center"></i>Kotak Pesan</a></li>
+    </ul>
+
+    <div class="mt-auto pt-8">
+      <a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-cog mr-3 w-5 text-center"></i>Pengaturan</a>
+      <a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-sign-out-alt mr-3 w-5 text-center"></i>Keluar</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1 md:pl-64">
+    <!-- Topbar for Mobile -->
+    <div class="flex md:hidden items-center justify-between p-4 bg-white shadow">
+      <h1 class="font-bold text-lg">MAN 1 Pessel</h1>
+      <button id="menuToggle" class="text-indigo-600 text-xl">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+   <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">📊 Statistik PPDB MAN 1 Pessel</h1>
+
+    <!-- Ringkasan Angka -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-lg font-semibold text-gray-700">Total Pendaftar</h3>
+        <p class="text-3xl font-bold text-indigo-600 mt-2">320</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-lg font-semibold text-gray-700">Lolos Seleksi</h3>
+        <p class="text-3xl font-bold text-green-600 mt-2">250</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-lg font-semibold text-gray-700">Tidak Lolos</h3>
+        <p class="text-3xl font-bold text-red-500 mt-2">70</p>
+      </div>
+    </div>
+
+    <!-- Grafik Jalur Pendaftaran -->
+    <div class="bg-white rounded-lg shadow p-6 mb-10">
+      <h2 class="text-xl font-semibold text-gray-700 mb-4">Sebaran Jalur Pendaftaran</h2>
+      <canvas id="jalurChart" height="100"></canvas>
+    </div>
+
+    <!-- Grafik Jurusan -->
+    <div class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-semibold text-gray-700 mb-4">Peminatan Jurusan</h2>
+      <canvas id="jurusanChart" height="100"></canvas>
+    </div>
+  </div>
+
+  <script>
+    const jalurChart = new Chart(document.getElementById('jalurChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Zonasi', 'Prestasi', 'Afirmasi', 'Pindahan'],
+        datasets: [{
+          data: [150, 80, 60, 30],
+          backgroundColor: ['#4f46e5', '#10b981', '#f59e0b', '#ef4444'],
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom' }
+        }
+      }
+    });
+
+    const jurusanChart = new Chart(document.getElementById('jurusanChart'), {
+      type: 'bar',
+      data: {
+        labels: ['IPA', 'IPS', 'Agama'],
+        datasets: [{
+          label: 'Jumlah Pendaftar',
+          data: [120, 140, 60],
+          backgroundColor: ['#6366f1', '#34d399', '#f87171']
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

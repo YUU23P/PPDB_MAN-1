@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard MAN 1 Pessel - Profil & PPDB Online</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --secondary: #7c3aed;
+      --accent: #10b981;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .sidebar {
+      transition: all 0.3s;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+
+    .card {
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Sidebar -->
+  <div class="sidebar hidden md:flex md:flex-col w-64 h-screen fixed overflow-y-auto text-white px-4 py-8 z-30">
+    <div class="flex items-center justify-center mb-10">
+      <div class="w-12 h-12 rounded-lg bg-white flex items-center justify-center mr-3">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/62a2c45b-be06-4e53-be53-f73f0280971e.png" class="w-10 h-10"/>
+      </div>
+      <h1 class="text-xl font-bold">MAN 1 Pessel</h1>
+    </div>
+
+    <div class="mb-8 px-3">
+      <div class="flex items-center bg-white bg-opacity-10 rounded-lg p-3">
+        <div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/050da9b8-30fc-4ea3-b9ee-95711a690304.png" class="w-full h-full object-cover"/>
+        </div>
+        <div>
+          <h4 class="font-semibold">Admin MAN</h4>
+          <p class="text-xs text-gray-200">Administrator</p>
+        </div>
+      </div>
+    </div>
+
+    <ul class="space-y-2">
+      <li><a href="admin.html" class="flex items-center p-3 rounded-lg text-white bg-white bg-opacity-20"><i class="fas fa-home mr-3 w-5 text-center"></i>Dashboard</a></li>
+      <li><a href="profil.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-user-graduate mr-3 w-5 text-center"></i>Profil Sekolah</a></li>
+      <li><a href="kalender.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-calendar-alt mr-3 w-5 text-center"></i>Kalendar Akademik</a></li>
+      <li><a href="ppdb.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-file-alt mr-3 w-5 text-center"></i>PPDB Online</a></li>
+      <li><a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-chart-line mr-3 w-5 text-center"></i>Statistik PPDB</a></li>
+      <li><a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-book mr-3 w-5 text-center"></i>Kurikulum</a></li>
+      <li><a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-users mr-3 w-5 text-center"></i>Guru & Staff</a></li>
+      <li><a href="galeri.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-image mr-3 w-5 text-center"></i>Galeri Sekolah</a></li>
+      <li><a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-envelope mr-3 w-5 text-center"></i>Kotak Pesan</a></li>
+    </ul>
+
+    <div class="mt-auto pt-8">
+      <a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-cog mr-3 w-5 text-center"></i>Pengaturan</a>
+      <a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-sign-out-alt mr-3 w-5 text-center"></i>Keluar</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1 md:pl-64">
+    <!-- Topbar for Mobile -->
+    <div class="flex md:hidden items-center justify-between p-4 bg-white shadow">
+      <h1 class="font-bold text-lg">MAN 1 Pessel</h1>
+      <button id="menuToggle" class="text-indigo-600 text-xl">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+<!-- News & Events -->
+ 
+ <div id="formContainer" class="container mx-auto px-4 mb-12 hidden">
+  <div class="bg-white p-6 rounded-lg shadow-md">
+    <h3 class="text-xl font-bold mb-4 text-gray-800">Tambah Berita Baru</h3>
+    <form id="formBerita" class="space-y-4">
+      <div>
+        <label class="block mb-1 font-medium text-sm text-gray-700">Judul Berita</label>
+        <input type="text" id="judulBerita" required class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-indigo-300"/>
+      </div>
+      <div>
+        <label class="block mb-1 font-medium text-sm text-gray-700">Tanggal</label>
+        <input type="date" id="tanggalBerita" required class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-indigo-300"/>
+      </div>
+      <div>
+        <label class="block mb-1 font-medium text-sm text-gray-700">URL Gambar</label>
+        <input type="url" id="gambarBerita" placeholder="https://..." class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-indigo-300"/>
+      </div>
+      <div>
+        <label class="block mb-1 font-medium text-sm text-gray-700">Deskripsi Singkat</label>
+        <textarea id="deskripsiBerita" required rows="3" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-indigo-300"></textarea>
+      </div>
+      <div>
+        <label class="block mb-1 font-medium text-sm text-gray-700">Konten Lengkap (HTML diperbolehkan)</label>
+        <textarea id="kontenBerita" rows="4" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-indigo-300"></textarea>
+      </div>
+      <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded">Tambah Berita</button>
+    </form>
+  </div>
+</div>
+
+
+  <section class="py-12">
+    
+<div class="text-right mb-6">
+  <button onclick="toggleForm()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded shadow inline-flex items-center">
+    <i class="fas fa-plus mr-2"></i> Tambah Berita
+  </button>
+</div>
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-2">Berita & Acara Terkini</h2>
+        <div class="w-20 h-1 bg-indigo-600 mx-auto mb-4"></div>
+        <p class="text-gray-600">Informasi terbaru seputar kegiatan dan pengumuman penting dari MAN 1 Pessel.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Kartu 1 -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden card transition-all">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3d08c1f6-6b5a-43f2-905a-bf1425b234b5.png" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="text-sm text-gray-500 mb-2">
+              <i class="fas fa-calendar-alt mr-2"></i>15 Juni 2024
+            </div>
+            <h3 class="text-lg font-bold mb-2 text-gray-800">Raih Medali Emas di Kompetisi Sains Nasional</h3>
+            <p class="text-gray-600 mb-4">Tim sains MAN 1 Pessel berhasil meraih medali emas...</p>
+            <button onclick="openModal('Raih Medali Emas di Kompetisi Sains Nasional', `
+              <p>Tim sains MAN 1 Pessel meraih medali emas dalam ajang Kompetisi Sains Nasional 2024 yang diadakan oleh Kemendikbud. Kompetisi ini diikuti oleh ribuan pelajar dari seluruh Indonesia.</p>
+              <p class='mt-2'>Keberhasilan ini tidak lepas dari bimbingan intensif guru dan kerja keras siswa. Kepala sekolah menyampaikan rasa bangga atas prestasi yang mengharumkan nama madrasah di kancah nasional.</p>
+              <ul class='list-disc ml-5 mt-3 text-gray-700'>
+                <li>Medali Emas: Fisika</li>
+                <li>Medali Perak: Biologi</li>
+                <li>Medali Perunggu: Matematika</li>
+              </ul>
+            `)" class="text-indigo-600 font-medium inline-flex items-center">
+              Baca Selengkapnya <i class="fas fa-arrow-right ml-2 text-sm"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Kartu 2 -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden card transition-all">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7c20a055-43b2-4afb-ae19-819f50786a3d.png" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="text-sm text-gray-500 mb-2">
+              <i class="fas fa-calendar-alt mr-2"></i>5 Juni 2024
+            </div>
+            <h3 class="text-lg font-bold mb-2 text-gray-800">Jadwal Ujian Akhir Semester Genap 2024</h3>
+            <p class="text-gray-600 mb-4">Berikut jadwal lengkap UAS Genap TA 2023/2024 untuk semua kelas...</p>
+            <button onclick="openModal('Jadwal Ujian Akhir Semester Genap 2024', `
+              <p>Ujian Akhir Semester Genap dimulai pada tanggal <strong>10 Juni hingga 21 Juni 2024</strong>. Seluruh siswa diwajibkan hadir tepat waktu dan mematuhi tata tertib ujian.</p>
+              <p class='mt-2'>Pembagian jadwal:</p>
+              <ul class='list-disc ml-5 text-gray-700 mt-1'>
+                <li>Senin: Matematika, Bahasa Indonesia</li>
+                <li>Selasa: Biologi, Sejarah</li>
+                <li>Rabu: Fisika, Ekonomi</li>
+                <li>... dan seterusnya</li>
+              </ul>
+              <p class='mt-2'>Silakan unduh jadwal lengkap di ruang kelas masing-masing.</p>
+            `)" class="text-indigo-600 font-medium inline-flex items-center">
+              Baca Selengkapnya <i class="fas fa-arrow-right ml-2 text-sm"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Kartu 3 -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden card transition-all">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f2d158a2-a872-4099-8496-8f9ab384bb4e.png" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <div class="text-sm text-gray-500 mb-2">
+              <i class="fas fa-calendar-alt mr-2"></i>28 Mei 2024
+            </div>
+            <h3 class="text-lg font-bold mb-2 text-gray-800">Workshop Kurikulum Merdeka</h3>
+            <p class="text-gray-600 mb-4">MAN 1 Pessel mengadakan workshop untuk persiapan Kurikulum Merdeka...</p>
+            <button onclick="openModal('Workshop Kurikulum Merdeka', `
+              <p>Kegiatan workshop ini diikuti oleh seluruh tenaga pendidik dari MAN 1 Pessel dan dipandu oleh narasumber dari Balai Pengembangan Kurikulum.</p>
+              <p class='mt-2'>Topik utama yang dibahas:</p>
+              <ul class='list-disc ml-5 text-gray-700 mt-1'>
+                <li>Implementasi Profil Pelajar Pancasila</li>
+                <li>Asesmen Diagnostik & Format Pembelajaran</li>
+                <li>Manajemen Kelas dalam Kurikulum Baru</li>
+              </ul>
+            `)" class="text-indigo-600 font-medium inline-flex items-center">
+              Baca Selengkapnya <i class="fas fa-arrow-right ml-2 text-sm"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL -->
+  <div id="beritaModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
+    <div class="bg-white max-w-2xl w-full mx-4 p-6 rounded-lg shadow-lg relative animate-fade-in overflow-y-auto max-h-[90vh]">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-red-600">
+        <i class="fas fa-times fa-lg"></i>
+      </button>
+      <h2 id="modalTitle" class="text-2xl font-bold text-gray-800 mb-4">Judul Berita</h2>
+      <div id="modalContent" class="text-gray-700 text-justify leading-relaxed">
+        <!-- Konten akan dimuat di sini -->
+      </div>
+    </div>
+  </div>
+    
+    <!-- Footer -->
+    <footer class="bg-white border-t px-6 py-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-sm text-gray-600">© 2023 MAN 1 Pesisir Selatan. Seluruh hak cipta dilindungi.</p>
+        <div class="flex space-x-4 mt-2 md:mt-0">
+          <a href="#" class="text-sm text-gray-600 hover:text-indigo-600">Kebijakan Privasi</a>
+          <a href="#" class="text-sm text-gray-600 hover:text-indigo-600">Syarat & Ketentuan</a>
+          <a href="#" class="text-sm text-gray-600 hover:text-indigo-600">Bantuan</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden">
+    <div class="bg-white w-4/5 h-full p-4">
+      <div class="flex justify-between items-center mb-8">
+        <h1 class="font-bold">MAN 1 Pessel</h1>
+        <button id="closeMenu"><i class="fas fa-times text-gray-700"></i></button>
+      </div>
+      <!-- Copy menu items here (same as sidebar) -->
+      <!-- ... -->
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('menuToggle')?.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.remove('hidden');
+    });
+    document.getElementById('closeMenu')?.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.add('hidden');
+    });
+     function openModal(title, content) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalContent').innerHTML = content;
+      document.getElementById('beritaModal').classList.remove('hidden');
+      document.getElementById('beritaModal').classList.add('flex');
+    }
+
+    function closeModal() {
+      document.getElementById('beritaModal').classList.add('hidden');
+      document.getElementById('beritaModal').classList.remove('flex');
+    }
+    document.getElementById('formBerita').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const judul = document.getElementById('judulBerita').value;
+  const tanggal = document.getElementById('tanggalBerita').value;
+  const gambar = document.getElementById('gambarBerita').value || 'https://via.placeholder.com/400x200';
+  const deskripsi = document.getElementById('deskripsiBerita').value;
+  const konten = document.getElementById('kontenBerita').value;
+
+  const beritaBaru = document.createElement('div');
+  beritaBaru.className = 'bg-white rounded-xl shadow-md overflow-hidden card transition-all';
+  beritaBaru.innerHTML = `
+    <img src="${gambar}" class="w-full h-48 object-cover">
+    <div class="p-6">
+      <div class="text-sm text-gray-500 mb-2">
+        <i class="fas fa-calendar-alt mr-2"></i>${new Date(tanggal).toLocaleDateString('id-ID')}
+      </div>
+      <h3 class="text-lg font-bold mb-2 text-gray-800">${judul}</h3>
+      <p class="text-gray-600 mb-4">${deskripsi}</p>
+      <button onclick="openModal('${judul}', \`${konten.replace(/`/g, '\\`')}\`)" class="text-indigo-600 font-medium inline-flex items-center">
+        Baca Selengkapnya <i class="fas fa-arrow-right ml-2 text-sm"></i>
+      </button>
+    </div>
+  `;
+
+  const grid = document.querySelector('.grid.md\\:grid-cols-3');
+  grid.prepend(beritaBaru); // Tambah ke atas
+
+  // Reset form
+  this.reset();
+});
+function toggleForm() {
+  const formContainer = document.getElementById('formContainer');
+  formContainer.classList.toggle('hidden');
+}
+
+  </script>
+</body>
+</html>

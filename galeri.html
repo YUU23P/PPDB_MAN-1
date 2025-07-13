@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard MAN 1 Pessel - Profil & PPDB Online</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --secondary: #7c3aed;
+      --accent: #10b981;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .sidebar {
+      transition: all 0.3s;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+
+    .card {
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Sidebar -->
+  <div class="sidebar hidden md:flex md:flex-col w-64 h-screen fixed overflow-y-auto text-white px-4 py-8 z-30">
+    <div class="flex items-center justify-center mb-10">
+      <div class="w-12 h-12 rounded-lg bg-white flex items-center justify-center mr-3">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/62a2c45b-be06-4e53-be53-f73f0280971e.png" class="w-10 h-10"/>
+      </div>
+      <h1 class="text-xl font-bold">MAN 1 Pessel</h1>
+    </div>
+
+    <div class="mb-8 px-3">
+      <div class="flex items-center bg-white bg-opacity-10 rounded-lg p-3">
+        <div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/050da9b8-30fc-4ea3-b9ee-95711a690304.png" class="w-full h-full object-cover"/>
+        </div>
+        <div>
+          <h4 class="font-semibold">Admin MAN</h4>
+          <p class="text-xs text-gray-200">Administrator</p>
+        </div>
+      </div>
+    </div>
+
+    <ul class="space-y-2">
+      <li><a href="admin.html" class="flex items-center p-3 rounded-lg text-white bg-white bg-opacity-20"><i class="fas fa-home mr-3 w-5 text-center"></i>Dashboard</a></li>
+      <li><a href="profil.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-user-graduate mr-3 w-5 text-center"></i>Profil Sekolah</a></li>
+      <li><a href="kalender.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-calendar-alt mr-3 w-5 text-center"></i>Kalendar Akademik</a></li>
+      <li><a href="ppdb.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-file-alt mr-3 w-5 text-center"></i>PPDB Online</a></li>
+      <li><a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-chart-line mr-3 w-5 text-center"></i>Statistik PPDB</a></li>
+      <li><a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-book mr-3 w-5 text-center"></i>Kurikulum</a></li>
+      <li><a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-users mr-3 w-5 text-center"></i>Guru & Staff</a></li>
+      <li><a href="galeri.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-image mr-3 w-5 text-center"></i>Galeri Sekolah</a></li>
+      <li><a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-envelope mr-3 w-5 text-center"></i>Kotak Pesan</a></li>
+    </ul>
+
+    <div class="mt-auto pt-8">
+      <a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-cog mr-3 w-5 text-center"></i>Pengaturan</a>
+      <a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-sign-out-alt mr-3 w-5 text-center"></i>Keluar</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1 md:pl-64">
+    <!-- Topbar for Mobile -->
+    <div class="flex md:hidden items-center justify-between p-4 bg-white shadow">
+      <h1 class="font-bold text-lg">MAN 1 Pessel</h1>
+      <button id="menuToggle" class="text-indigo-600 text-xl">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Gallery Preview -->
+     <div id="modalTambahGaleri" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+  <div class="bg-white w-full max-w-md rounded-lg shadow-lg p-6">
+    <h3 class="text-lg font-bold mb-4">Tambah Galeri Baru</h3>
+    <form>
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Judul</label>
+        <input type="text" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Contoh: Upacara Bendera">
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Upload Gambar</label>
+        <input type="file" class="w-full px-3 py-2 border rounded-lg focus:outline-none">
+      </div>
+      <div class="flex justify-end space-x-2 mt-4">
+        <button type="button" onclick="document.getElementById('modalTambahGaleri').classList.add('hidden')" class="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400">Batal</button>
+        <button type="submit" class="px-4 py-2 rounded bg-indigo-600 text-white hover:bg-indigo-700">Simpan</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+    <section id="galeri" class="py-12 bg-gray-50">
+        <div class="flex justify-end mb-6">
+  <button onclick="document.getElementById('modalTambahGaleri').classList.remove('hidden')" 
+          class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg font-medium inline-flex items-center">
+    <i class="fas fa-plus mr-2"></i> Tambah Galeri
+  </button>
+</div>
+
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Galeri Kegiatan</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Momen-momen berharga di MAN 1 Pessel.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ce15482d-18e3-4405-97f9-dfb85ffc64d8.png" alt="Upacara bendera hari Senin di lapangan sekolah dengan siswa berpakaian seragam lengkap" class="w-full h-48 object-cover transition-transform group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white font-medium">Upacara Bendera</span>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1c0902a0-77de-4822-a847-0deeefb85bf8.png" alt="Siswa melakukan eksperimen di laboratorium biologi dengan peralatan modern" class="w-full h-48 object-cover transition-transform group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white font-medium">Praktikum Lab</span>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/43b8c6b4-f61f-4eae-a8e4-259e6f5c76d4.png" alt="Kegiatan ekstrakurikuler pramuka dengan siswa sedang mendirikan tenda di alam terbuka" class="w-full h-48 object-cover transition-transform group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white font-medium">Kegiatan Pramuka</span>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9d9aaf5d-7895-4beb-8ae3-196904ff0bcb.png" alt="Siswa MAN 1 Pessel mempresentasikan proyek ilmiah di depan dewan juri" class="w-full h-48 object-cover transition-transform group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white font-medium">Presentasi Proyek</span>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/be3d01c4-14fa-4be4-a89c-8b3bfac2a708.png" alt="Penyerahan piala kepada siswa berprestasi di acara penghargaan sekolah" class="w-full h-48 object-cover transition-transform group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white font-medium">Penghargaan Siswa</span>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b07d6850-abc5-40ae-ad0a-a4fa97308e5f.png" alt="Kegiatan outing class siswa ke museum dengan panduan dari guru" class="w-full h-48 object-cover transition-transform group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white font-medium">Outing Class</span>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1280d7fd-bb3e-4e92-bd64-9366b386bc1b.png" alt="Pentas seni tahunan dengan siswa menampilkan tari tradisional di panggung" class="w-full h-48 object-cover transition-transform group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white font-medium">Pentas Seni</span>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/eb8ea945-575a-40a4-bc0a-3a4799959fca.png" alt="Siswa sedang membaca buku di perpustakaan sekolah yang modern dan nyaman" class="w-full h-48 object-cover transition-transform group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white font-medium">Kegiatan Literasi</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg font-medium inline-flex items-center">
+                    <i class="fas fa-images mr-2"></i> Lihat Galeri Lengkap
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-white border-t px-6 py-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-sm text-gray-600">© 2023 MAN 1 Pesisir Selatan. Seluruh hak cipta dilindungi.</p>
+        <div class="flex space-x-4 mt-2 md:mt-0">
+          <a href="#" class="text-sm text-gray-600 hover:text-indigo-600">Kebijakan Privasi</a>
+          <a href="#" class="text-sm text-gray-600 hover:text-indigo-600">Syarat & Ketentuan</a>
+          <a href="#" class="text-sm text-gray-600 hover:text-indigo-600">Bantuan</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden">
+    <div class="bg-white w-4/5 h-full p-4">
+      <div class="flex justify-between items-center mb-8">
+        <h1 class="font-bold">MAN 1 Pessel</h1>
+        <button id="closeMenu"><i class="fas fa-times text-gray-700"></i></button>
+      </div>
+      <!-- Copy menu items here (same as sidebar) -->
+      <!-- ... -->
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('menuToggle')?.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.remove('hidden');
+    });
+    document.getElementById('closeMenu')?.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.add('hidden');
+    });
+  </script>
+</body>
+</html>

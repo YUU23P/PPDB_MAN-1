@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard MAN 1 Pessel - Profil & PPDB Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --secondary: #7c3aed;
+            --accent: #10b981;
+            --light: #f8fafc;
+            --dark: #1e293b;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+        }
+        
+        .sidebar {
+            transition: all 0.3s;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-card {
+            border-left: 4px solid var(--accent);
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #e2e8f0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            color: white;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50">
+    <div class="flex h-full">
+        <!-- Sidebar -->
+        <div class="sidebar hidden md:flex md:flex-col w-64 h-screen fixed overflow-y-auto text-white px-4 py-8">
+            <div class="flex items-center justify-center mb-10">
+                <div class="w-12 h-12 rounded-lg bg-white flex items-center justify-center mr-3">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/62a2c45b-be06-4e53-be53-f73f0280971e.png" alt="Logo MAN 1 Pessel modern dengan ikon sekolah dan tulisan arab" class="w-10 h-10">
+                </div>
+                <h1 class="text-xl font-bold">MAN 1 Pessel</h1>
+            </div>
+            
+            <div class="mb-8 px-3">
+                <div class="flex items-center bg-white bg-opacity-10 rounded-lg p-3">
+                    <div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/050da9b8-30fc-4ea3-b9ee-95711a690304.png" alt="Foto profil admin dengan latar belakang sekolah" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="font-semibold">Admin MAN</h4>
+                        <p class="text-xs text-gray-200">Administrator</p>
+                    </div>
+                </div>
+            </div>
+            
+            <ul class="space-y-2">
+                <li>
+                    <a href="admin.html" class="flex items-center p-3 rounded-lg text-white bg-white bg-opacity-20">
+                        <i class="fas fa-home mr-3 w-5 text-center"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="profil.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors">
+                        <i class="fas fa-user-graduate mr-3 w-5 text-center"></i>
+                        <span>Profil Sekolah</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="kalender.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors">
+                        <i class="fas fa-calendar-alt mr-3 w-5 text-center"></i>
+                        <span>Kalendar Akademik</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ppdb.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors">
+                        <i class="fas fa-file-alt mr-3 w-5 text-center"></i>
+                        <span>PPDB Online</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="statistik.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors">
+                        <i class="fas fa-chart-line mr-3 w-5 text-center"></i>
+                        <span>Statistik PPDB</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors">
+                        <i class="fas fa-book mr-3 w-5 text-center"></i>
+                        <span>Kurikulum</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors">
+                        <i class="fas fa-users mr-3 w-5 text-center"></i>
+                        <span>Guru & Staff</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="galeri.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors">
+                        <i class="fas fa-image mr-3 w-5 text-center"></i>
+                        <span>Galeri Sekolah</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors">
+                        <i class="fas fa-envelope mr-3 w-5 text-center"></i>
+                        <span>Kotak Pesan</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="mt-auto pt-8">
+                <a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors">
+                    <i class="fas fa-cog mr-3 w-5 text-center"></i>
+                    <span>Pengaturan</span>
+                </a>
+                <a href="index.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors">
+                    <i class="fas fa-sign-out-alt mr-3 w-5 text-center"></i>
+                    <span>Keluar</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="md:ml-64 flex-1 overflow-x-hidden">
+            <!-- Top Navbar -->
+            <nav class="bg-white shadow-sm py-4 px-6 flex justify-between items-center sticky top-0 z-10">
+                <div class="flex items-center md:hidden">
+                    <button id="menuToggle" class="text-gray-700 mr-4">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="text-lg font-semibold">MAN 1 Pessel</h1>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="relative hidden md:block">
+                        <input type="text" placeholder="Cari..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        <i class="fas fa-search absolute left-3 top-2.5 text-gray-400"></i>
+                    </div>
+                    
+                    <div class="relative">
+                        <button class="text-gray-600 hover:text-gray-900">
+                            <i class="fas fa-bell text-xl"></i>
+                            <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                        </button>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-full overflow-hidden">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9e830970-ec87-43ea-b180-92c94311613f.png" alt="Foto admin mini profile dengan suit formal" class="w-full h-full object-cover">
+                        </div>
+                        <span class="font-medium">Admin</span>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Content -->
+            <main class="p-6">
+                <!-- Header -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2 md:mb-0">Dashboard MAN 1 Pessel</h2>
+                    <div class="flex space-x-3">
+                        <button class="px-4 py-2 bg-white border border-gray-300 rounded-lg flex items-center">
+                            <i class="fas fa-calendar-day mr-2 text-gray-600"></i>
+                            <span>12 Juni 2023</span>
+                        </button>
+                        <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg flex items-center">
+                            <i class="fas fa-plus mr-2"></i>
+                            <span>Daftar Baru</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="card bg-white rounded-xl p-6 shadow-sm animate-fade-in" style="animation-delay: 0.1s;">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Total Pendaftar</p>
+                                <h3 class="text-2xl font-bold mt-1">187</h3>
+                                <p class="text-green-500 text-sm mt-2 flex items-center">
+                                    <i class="fas fa-arrow-up mr-1 text-xs"></i>
+                                    <span>12% dari bulan lalu</span>
+                                </p>
+                            </div>
+                            <div class="feature-icon bg-indigo-100 text-indigo-600">
+                                <i class="fas fa-users text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card bg-white rounded-xl p-6 shadow-sm animate-fade-in" style="animation-delay: 0.2s;">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Pendaftar Hari Ini</p>
+                                <h3 class="text-2xl font-bold mt-1">14</h3>
+                                <p class="text-green-500 text-sm mt-2 flex items-center">
+                                    <i class="fas fa-arrow-up mr-1 text-xs"></i>
+                                    <span>3 dari kemarin</span>
+                                </p>
+                            </div>
+                            <div class="feature-icon bg-blue-100 text-blue-600">
+                                <i class="fas fa-calendar-check text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card bg-white rounded-xl p-6 shadow-sm animate-fade-in" style="animation-delay: 0.3s;">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Verifikasi</p>
+                                <h3 class="text-2xl font-bold mt-1">134</h3>
+                                <p class="text-gray-500 text-sm mt-2">
+                                    <span>71.6% dari total</span>
+                                </p>
+                            </div>
+                            <div class="feature-icon bg-green-100 text-green-600">
+                                <i class="fas fa-check-circle text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card bg-white rounded-xl p-6 shadow-sm animate-fade-in" style="animation-delay: 0.4s;">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Diterima</p>
+                                <h3 class="text-2xl font-bold mt-1">92</h3>
+                                <p class="text-gray-500 text-sm mt-2">
+                                    <span>68.7% dari verifikasi</span>
+                                </p>
+                            </div>
+                            <div class="feature-icon bg-purple-100 text-purple-600">
+                                <i class="fas fa-trophy text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Progress Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                    <div class="card bg-white rounded-xl p-6 shadow-sm lg:col-span-2">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-semibold text-lg">Progress Pendaftaran</h3>
+                            <div class="relative">
+                                <select class="border border-gray-300 rounded-md px-3 py-1 pr-8 bg-white appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
+                                    <option>Minggu Ini</option>
+                                    <option>Bulan Ini</option>
+                                    <option>Semua</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                                    <i class="fas fa-chevron-down text-xs text-gray-500"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="h-80">
+                            <div class="h-full bg-blue-50 rounded-lg p-4 flex flex-col justify-center">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/43eddae7-9c2b-4fba-9685-5060b6097a4c.png" alt="Grafik statistik pendaftaran dengan garis naik berwarna biru dan ungu, menampilkan tren kenaikan pendaftar mingguan" class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card bg-white rounded-xl p-6 shadow-sm">
+                        <h3 class="font-semibold text-lg mb-6">Progress PPDB</h3>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm font-medium">Pendaftar Baru</span>
+                                    <span class="text-sm font-medium">75%</span>
+                                </div>
+                                <div class="progress-bar rounded-full">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm font-medium">Verifikasi Dokumen</span>
+                                    <span class="text-sm font-medium">62%</span>
+                                </div>
+                                <div class="progress-bar rounded-full">
+                                    <div class="progress-fill" style="width: 62%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm font-medium">Seleksi</span>
+                                    <span class="text-sm font-medium">48%</span>
+                                </div>
+                                <div class="progress-bar rounded-full">
+                                    <div class="progress-fill" style="width: 48%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm font-medium">Pengumuman</span>
+                                    <span class="text-sm font-medium">35%</span>
+                                </div>
+                                <div class="progress-bar rounded-full">
+                                    <div class="progress-fill" style="width: 35%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm font-medium">Daftar Ulang</span>
+                                    <span class="text-sm font-medium">22%</span>
+                                </div>
+                                <div class="progress-bar rounded-full">
+                                    <div class="progress-fill" style="width: 22%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions & Recent Activities -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                    <div class="card bg-white rounded-xl p-6 shadow-sm">
+                        <h3 class="font-semibold text-lg mb-6">Aksi Cepat</h3>
+                        
+                        <div class="space-y-3">
+                            <a href="#" class="flex items-center p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors">
+                                <div class="w-10 h-10 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <span>Input Pendaftar Manual</span>
+                            </a>
+                            
+                            <a href="#" class="flex items-center p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors">
+                                <div class="w-10 h-10 rounded-lg bg-green-100 text-green-600 flex items-center justify-center mr-3">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <span>Verifikasi Dokumen</span>
+                            </a>
+                            
+                            <a href="#" class="flex items-center p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors">
+                                <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center mr-3">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <span>Kirim Pemberitahuan</span>
+                            </a>
+                            
+                            <a href="#" class="flex items-center p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors">
+                                <div class="w-10 h-10 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center mr-3">
+                                    <i class="fas fa-print"></i>
+                                </div>
+                                <span>Cetak Laporan</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="card bg-white rounded-xl p-6 shadow-sm lg:col-span-2">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-semibold text-lg">Aktivitas Terakhir</h3>
+                            <a href="#" class="text-sm text-indigo-600 hover:text-indigo-800">Lihat Semua</a>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex">
+                                <div class="flex-shrink-0 mr-3">
+                                    <div class="w-10 h-10 rounded-lg bg-green-100 text-green-600 flex items-center justify-center">
+                                        <i class="fas fa-user-check"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Verifikasi dokumen berhasil</p>
+                                    <p class="text-sm text-gray-500">Siswa A.B. Setiawan telah diverifikasi oleh Admin</p>
+                                    <p class="text-xs text-gray-400 mt-1">2 jam yang lalu</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="flex-shrink-0 mr-3">
+                                    <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Pendaftar baru</p>
+                                    <p class="text-sm text-gray-500">Dwi Prasetyo telah mendaftar melalui PPDB Online</p>
+                                    <p class="text-xs text-gray-400 mt-1">Hari ini, 10:15</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="flex-shrink-0 mr-3">
+                                    <div class="w-10 h-10 rounded-lg bg-yellow-100 text-yellow-600 flex items-center justify-center">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Pesan baru</p>
+                                    <p class="text-sm text-gray-500">Pertanyaan dari orang tua siswa mengenai seleksi</p>
+                                    <p class="text-xs text-gray-400 mt-1">Kemarin, 15:30</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="flex-shrink-0 mr-3">
+                                    <div class="w-10 h-10 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center">
+                                        <i class="fas fa-file-upload"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Dokumen diunggah</p>
+                                    <p class="text-sm text-gray-500">Siswa Rina Amelia mengunggah berkas pendaftaran</p>
+                                    <p class="text-xs text-gray-400 mt-1">Kemarin, 13:45</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Featured Content -->
+                <div class="card bg-white rounded-xl p-6 shadow-sm mb-8">
+                    <h3 class="font-semibold text-lg mb-6">Fitur Unggulan</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="feature-item bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 flex flex-col items-center text-center">
+                            <div class="w-16 h-16 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4">
+                                <i class="fas fa-mobile-alt text-2xl"></i>
+                            </div>
+                            <h4 class="font-medium mb-2">PPDB Online</h4>
+                            <p class="text-sm text-gray-600 mb-4">Proses pendaftaran siswa baru secara online yang mudah dan cepat</p>
+                            <a href="#" class="text-indigo-600 text-sm font-medium flex items-center">
+                                <span>Coba Sekarang</span>
+                                <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="feature-item bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 flex flex-col items-center text-center">
+                            <div class="w-16 h-16 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-4">
+                                <i class="fas fa-calendar-check text-2xl"></i>
+                            </div>
+                            <h4 class="font-medium mb-2">Jadwal Lengkap</h4>
+                            <p class="text-sm text-gray-600 mb-4">Kalender akademik dan jadwal kegiatan sekolah</p>
+                            <a href="#" class="text-blue-600 text-sm font-medium flex items-center">
+                                <span>Lihat Jadwal</span>
+                                <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="feature-item bg-gradient-to-br from-green-50 to-teal-50 rounded-xl p-6 flex flex-col items-center text-center">
+                            <div class="w-16 h-16 rounded-xl bg-green-100 text-green-600 flex items-center justify-center mb-4">
+                                <i class="fas fa-chart-line text-2xl"></i>
+                            </div>
+                            <h4 class="font-medium mb-2">Statistik Real-time</h4>
+                            <p class="text-sm text-gray-600 mb-4">Pantau perkembangan PPDB secara real-time</p>
+                            <a href="#" class="text-green-600 text-sm font-medium flex items-center">
+                                <span>Lihat Statistik</span>
+                                <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            
+            <!-- Footer -->
+            <footer class="bg-white border-t px-6 py-4">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <p class="text-sm text-gray-600">© 2023 MAN 1 Pesisir Selatan. Seluruh hak cipta dilindungi.</p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-sm text-gray-600 hover:text-indigo-600">Kebijakan Privasi</a>
+                        <a href="#" class="text-sm text-gray-600 hover:text-indigo-600">Syarat & Ketentuan</a>
+                        <a href="#" class="text-sm text-gray-600 hover:text-indigo-600">Bantuan</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobileMenu" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden">
+        <div class="bg-white w-4/5 h-full p-4">
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-lg bg-indigo-600 flex items-center justify-center mr-3">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/725c0307-dbdc-4bc5-8609-063aacf56eec.png" alt="Logo mobile MAN 1 Pessel versi mini" class="w-8 h-8">
+                    </div>
+                    <h1 class="font-bold">MAN 1 Pessel</h1>
+                </div>
+                <button id="closeMenu" class="text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <ul class="space-y-2">
+                <li>
+                    <a href="#" class="flex items-center p-3 rounded-lg text-white bg-indigo-600">
+                        <i class="fas fa-home mr-3 w-5 text-center"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-user-graduate mr-3 w-5 text-center"></i>
+                        <span>Profil Sekolah</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-calendar-alt mr-3 w-5 text-center"></i>
+                        <span>Kalendar Akademik</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-file-alt mr-3 w-5 text-center"></i>
+                        <span>PPDB Online</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-chart-line mr-3 w-5 text-center"></i>
+                        <span>Statistik PPDB</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-book mr-3 w-5 text-center"></i>
+                        <span>Kurikulum</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-users mr-3 w-5 text-center"></i>
+                        <span>Guru & Staff</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-image mr-3 w-5 text-center"></i>
+                        <span>Galeri Sekolah</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-envelope mr-3 w-5 text-center"></i>
+                        <span>Kotak Pesan</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="mt-8 pt-4 border-t">
+                <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                    <i class="fas fa-cog mr-3 w-5 text-center"></i>
+                    <span>Pengaturan</span>
+                </a>
+                <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                    <i class="fas fa-sign-out-alt mr-3 w-5 text-center"></i>
+                    <span>Keluar</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.remove('hidden');
+        });
+        
+        document.getElementById('closeMenu').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.add('hidden');
+        });
+        
+        // Animate cards on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
+

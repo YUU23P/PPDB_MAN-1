@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard MAN 1 Pessel - Profil & PPDB Online</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --secondary: #7c3aed;
+      --accent: #10b981;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .sidebar {
+      transition: all 0.3s;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+
+    .card {
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Sidebar -->
+  <div class="sidebar hidden md:flex md:flex-col w-64 h-screen fixed overflow-y-auto text-white px-4 py-8 z-30">
+    <div class="flex items-center justify-center mb-10">
+      <div class="w-12 h-12 rounded-lg bg-white flex items-center justify-center mr-3">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/62a2c45b-be06-4e53-be53-f73f0280971e.png" class="w-10 h-10"/>
+      </div>
+      <h1 class="text-xl font-bold">MAN 1 Pessel</h1>
+    </div>
+
+    <div class="mb-8 px-3">
+      <div class="flex items-center bg-white bg-opacity-10 rounded-lg p-3">
+        <div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/050da9b8-30fc-4ea3-b9ee-95711a690304.png" class="w-full h-full object-cover"/>
+        </div>
+        <div>
+          <h4 class="font-semibold">Admin MAN</h4>
+          <p class="text-xs text-gray-200">Administrator</p>
+        </div>
+      </div>
+    </div>
+
+    <ul class="space-y-2">
+      <li><a href="admin.html" class="flex items-center p-3 rounded-lg text-white bg-white bg-opacity-20"><i class="fas fa-home mr-3 w-5 text-center"></i>Dashboard</a></li>
+      <li><a href="profil.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-user-graduate mr-3 w-5 text-center"></i>Profil Sekolah</a></li>
+      <li><a href="kalender.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-calendar-alt mr-3 w-5 text-center"></i>Kalendar Akademik</a></li>
+      <li><a href="ppdb.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-file-alt mr-3 w-5 text-center"></i>PPDB Online</a></li>
+      <li><a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-chart-line mr-3 w-5 text-center"></i>Statistik PPDB</a></li>
+      <li><a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-book mr-3 w-5 text-center"></i>Kurikulum</a></li>
+      <li><a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-users mr-3 w-5 text-center"></i>Guru & Staff</a></li>
+      <li><a href="galeri.html" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-image mr-3 w-5 text-center"></i>Galeri Sekolah</a></li>
+      <li><a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-envelope mr-3 w-5 text-center"></i>Kotak Pesan</a></li>
+    </ul>
+
+    <div class="mt-auto pt-8">
+      <a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-cog mr-3 w-5 text-center"></i>Pengaturan</a>
+      <a href="#" class="flex items-center p-3 rounded-lg hover:bg-white hover:bg-opacity-10"><i class="fas fa-sign-out-alt mr-3 w-5 text-center"></i>Keluar</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1 md:pl-64">
+    <!-- Topbar for Mobile -->
+    <div class="flex md:hidden items-center justify-between p-4 bg-white shadow">
+      <h1 class="font-bold text-lg">MAN 1 Pessel</h1>
+      <button id="menuToggle" class="text-indigo-600 text-xl">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- PPDB Section -->
+    <section class="py-12 bg-indigo-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-indigo-800 mb-2">Penerimaan Peserta Didik Baru</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Daftarkan putra/putri Anda untuk menjadi bagian dari keluarga besar MAN 1 Pessel. Proses pendaftaran mudah dan cepat secara online.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-12 gap-8">
+                <div class="md:col-span-7">
+                    <div class="bg-white rounded-xl shadow-md p-6 mb-6 card-hover">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                            <span class="bg-indigo-100 text-indigo-800 p-2 rounded-full mr-3">
+                                <i class="fas fa-clipboard-list"></i>
+                            </span>
+                            Alur Pendaftaran PPDB
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 text-indigo-800 flex items-center justify-center mr-4">1</div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Formulir Pendaftaran Online</h4>
+                                    <p class="text-gray-600 text-sm">Isi data diri lengkap melalui formulir kami</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 text-indigo-800 flex items-center justify-center mr-4">2</div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Upload Dokumen</h4>
+                                    <p class="text-gray-600 text-sm">Scan dan upload dokumen yang diperlukan</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 text-indigo-800 flex items-center justify-center mr-4">3</div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Verifikasi Data</h4>
+                                    <p class="text-gray-600 text-sm">Tim kami akan memverifikasi data Anda</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 text-indigo-800 flex items-center justify-center mr-4">4</div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Pembayaran</h4>
+                                    <p class="text-gray-600 text-sm">Lakukan pembayaran sesuai petunjuk</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 text-indigo-800 flex items-center justify-center mr-4">5</div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Pengumuman Kelulusan</h4>
+                                    <p class="text-gray-600 text-sm">Cek status kelulusan di dashboard siswa</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                            <span class="bg-blue-100 text-blue-800 p-2 rounded-full mr-3">
+                                <i class="fas fa-question-circle"></i>
+                            </span>
+                            Pertanyaan Umum
+                        </h3>
+                        <div class="accordion space-y-3">
+                            <div class="border-b border-gray-200 pb-3">
+                                <button class="accordion-btn flex justify-between items-center w-full text-left font-medium text-gray-800">
+                                    Kapan pendaftaran PPDB dibuka?
+                                    <i class="fas fa-chevron-down text-sm ml-2 transition-transform"></i>
+                                </button>
+                                <div class="accordion-content hidden pt-2 text-gray-600 text-sm">
+                                    Pendaftaran PPDB MAN 1 Pessel dibuka setiap tahun pada bulan Mei hingga Juni. Untuk tahun ini, pendaftaran dibuka mulai 10 Mei 2024.
+                                </div>
+                            </div>
+                            <div class="border-b border-gray-200 pb-3">
+                                <button class="accordion-btn flex justify-between items-center w-full text-left font-medium text-gray-800">
+                                    Dokumen apa saja yang diperlukan?
+                                    <i class="fas fa-chevron-down text-sm ml-2 transition-transform"></i>
+                                </button>
+                                <div class="accordion-content hidden pt-2 text-gray-600 text-sm">
+                                    Dokumen yang diperlukan antara lain: Fotokopi akta kelahiran, KK, rapor SMP, foto ukuran 3x4, dan surat keterangan lain yang diperlukan.
+                                </div>
+                            </div>
+                            <div class="border-b border-gray-200 pb-3">
+                                <button class="accordion-btn flex justify-between items-center w-full text-left font-medium text-gray-800">
+                                    Apakah ada tes masuk?
+                                    <i class="fas fa-chevron-down text-sm ml-2 transition-transform"></i>
+                                </button>
+                                <div class="accordion-content hidden pt-2 text-gray-600 text-sm">
+                                    Ya, ada tes seleksi yang meliputi tes akademik dan wawancara. Jadwal tes akan diinformasikan setelah pendaftaran.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-5">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                        <div class="bg-indigo-600 text-white p-6">
+                            <h3 class="text-xl font-bold mb-2">Formulir Pendaftaran</h3>
+                            <p class="text-indigo-100">Isi data diri calon siswa dengan lengkap dan benar</p>
+                        </div>
+                        <div class="p-6">
+                            <form>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 text-sm font-medium mb-2" for="full-name">Nama Lengkap</label>
+                                    <input type="text" id="full-name" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 text-sm font-medium mb-2" for="birth-place">Tempat/Tanggal Lahir</label>
+                                    <div class="flex space-x-4">
+                                        <input type="text" id="birth-place" class="w-1/2 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Tempat Lahir">
+                                        <input type="date" id="birth-date" class="w-1/2 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 text-sm font-medium mb-2" for="school-origin">Asal Sekolah</label>
+                                    <input type="text" id="school-origin" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 text-sm font-medium mb-2" for="parents-name">Nama Orang Tua/Wali</label>
+                                    <input type="text" id="parents-name" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 text-sm font-medium mb-2" for="phone">No. Telepon/WhatsApp</label>
+                                    <input type="tel" id="phone" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                                <div class="mb-6">
+                                    <label class="block text-gray-700 text-sm font-medium mb-2" for="email">Email</label>
+                                    <input type="email" id="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                                <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center">
+                                    <i class="fas fa-paper-plane mr-2"></i> Kirim Pendaftaran
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-white border-t px-6 py-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-sm text-gray-600">© 2023 MAN 1 Pesisir Selatan. Seluruh hak cipta dilindungi.</p>
+        <div class="flex space-x-4 mt-2 md:mt-0">
+          <a href="#" class="text-sm text-gray-600 hover:text-indigo-600">Kebijakan Privasi</a>
+          <a href="#" class="text-sm text-gray-600 hover:text-indigo-600">Syarat & Ketentuan</a>
+          <a href="#" class="text-sm text-gray-600 hover:text-indigo-600">Bantuan</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden">
+    <div class="bg-white w-4/5 h-full p-4">
+      <div class="flex justify-between items-center mb-8">
+        <h1 class="font-bold">MAN 1 Pessel</h1>
+        <button id="closeMenu"><i class="fas fa-times text-gray-700"></i></button>
+      </div>
+      <!-- Copy menu items here (same as sidebar) -->
+      <!-- ... -->
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('menuToggle')?.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.remove('hidden');
+    });
+    document.getElementById('closeMenu')?.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.add('hidden');
+    });
+  </script>
+</body>
+</html>

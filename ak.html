@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagram Aktivitas Aplikasi Laundry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7fafc;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .diagram-container {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 2rem;
+            margin-top: 2rem;
+            overflow: auto;
+        }
+        .title {
+            color: #2d3748;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.875rem;
+        }
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            .title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title text-3xl">Diagram Aktivitas Aplikasi Laundry</h1>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color bg-blue-500"></div>
+                <span>Utama</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color bg-green-500"></div>
+                <span>Pelanggan</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color bg-yellow-500"></div>
+                <span>Pegawai</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color bg-purple-500"></div>
+                <span>Admin</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color bg-red-500"></div>
+                <span>Pemilik</span>
+            </div>
+        </div>
+
+        <div class="diagram-container">
+            <div class="mermaid">
+                flowchart TD
+                    A[Home] --> B[Login/Daftar]
+                    B --> C[Pelanggan]
+                    C --> D[Pesan Layanan]
+                    D --> E[Pilih jenis layanan]
+                    D --> F[Pilih metode antar/ambil]
+                    C --> G[Ambil]
+                    G --> H[Pilih metode]
+                    C --> I[Pembayaran]
+                    C --> J[Pesanan]
+                    J --> K[Lihat Status Cucian]
+                    J --> L[Riwayat Pesanan]
+                    J --> M[Kirim ke WhatsApp]
+                    
+                    B --> N[Pegawai]
+                    N --> O[Lihat daftar pesanan]
+                    N --> P[Update status cucian]
+                    N --> Q[Kelola data pelanggan]
+                    
+                    B --> R[Admin]
+                    R --> S[Tambah/Edit/Hapus Layanan]
+                    R --> T[Kelola pegawai]
+                    R --> U[Lihat semua transaksi]
+                    
+                    B --> V[Pemilik]
+                    V --> W[Lihat laporan transaksi]
+                    V --> X[Lihat performa pegawai]
+                    V --> Y[Ubah nomor WhatsApp toko]
+                    
+                    style A fill:#3b82f6,color:white,stroke:#1d4ed8
+                    style C fill:#10b981,color:white,stroke:#059669
+                    style N fill:#f59e0b,color:white,stroke:#d97706
+                    style R fill:#8b5cf6,color:white,stroke:#7c3aed
+                    style V fill:#ef4444,color:white,stroke:#dc2626
+            </div>
+        </div>
+
+        <div class="mt-8 p-4 bg-blue-50 rounded-lg">
+            <h2 class="text-xl font-semibold mb-2 text-blue-800">Keterangan Diagram:</h2>
+            <p class="text-blue-900">
+                Diagram aktivitas ini menunjukkan alur kerja utama aplikasi laundry dengan peran yang berbeda:
+            </p>
+            <ul class="list-disc list-inside mt-2 space-y-1 text-blue-900">
+                <li><span class="font-medium">Birku:</span> Halaman utama dan titik masuk pertama</li>
+                <li><span class="font-medium">Hijau:</span> Fitur khusus pelanggan</li>
+                <li><span class="font-medium">Kuning:</span> Fitur khusus pegawai</li>
+                <li><span class="font-medium">Ungu:</span> Fitur khusus admin</li>
+                <li><span class="font-medium">Merah:</span> Fitur khusus pemilik</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis',
+                nodeSpacing: 50,
+                rankSpacing: 100
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Profil Sekolah - Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-100 p-6">
+
+  <div class="max-w-4xl mx-auto bg-white rounded-xl shadow p-8">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">Edit Profil Sekolah</h2>
+
+    <form action="/admin/update-profil" method="POST" enctype="multipart/form-data" class="space-y-6">
+      <!-- Gambar -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Gambar Utama</label>
+        <input type="file" name="gambar" accept="image/*" class="block w-full border border-gray-300 rounded px-4 py-2"/>
+        <p class="text-sm text-gray-500 mt-1">Biarkan kosong jika tidak ingin mengganti gambar.</p>
+      </div>
+
+      <!-- Judul -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Judul Halaman</label>
+        <input type="text" name="judul" value="Profil MAN 1 Pessel" class="w-full border border-gray-300 rounded px-4 py-2" required/>
+      </div>
+
+      <!-- Deskripsi Singkat -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Deskripsi Singkat</label>
+        <textarea name="deskripsi_singkat" rows="3" class="w-full border border-gray-300 rounded px-4 py-2" required>Madrasah Aliyah Negeri 1 Pesisir Selatan adalah lembaga pendidikan menengah atas berbasis Islam...</textarea>
+      </div>
+
+      <!-- Deskripsi Lengkap (modal) -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Deskripsi Lengkap (Baca Selengkapnya)</label>
+        <textarea name="deskripsi_lengkap" rows="8" class="w-full border border-gray-300 rounded px-4 py-2" required>
+MAN 1 Pesisir Selatan adalah lembaga pendidikan menengah berbasis Islam yang berdedikasi mencetak generasi muda yang berakhlak mulia, cerdas, dan berdaya saing global...
+
+Dengan akreditasi A dari BAN-S/M, MAN 1 Pessel terus meningkatkan kualitas pendidikan melalui kurikulum berbasis Merdeka Belajar...
+
+Fasilitas lengkap seperti laboratorium, musholla, lapangan, dan ruang multimedia mendukung kenyamanan belajar siswa...
+        </textarea>
+      </div>
+
+      <!-- Akreditasi -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Akreditasi</label>
+        <input type="text" name="akreditasi" value="A" class="w-full border border-gray-300 rounded px-4 py-2" required/>
+      </div>
+
+      <!-- Kurikulum -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Kurikulum</label>
+        <input type="text" name="kurikulum" value="Kurikulum Merdeka Plus" class="w-full border border-gray-300 rounded px-4 py-2" required/>
+      </div>
+
+      <!-- Tombol Simpan -->
+      <div class="pt-4">
+        <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded shadow">
+          Simpan Perubahan
+        </button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
